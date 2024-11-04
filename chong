@@ -1,0 +1,15 @@
+-- Create a table for storing product listings
+CREATE TABLE Products (
+    product_id INT AUTO_INCREMENT PRIMARY KEY,
+    seller_id INT NOT NULL,
+    product_name VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    category VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (seller_id) REFERENCES Sellers(seller_id) ON DELETE CASCADE
+);
+
+-- Insert a new product listing
+INSERT INTO Products (seller_id, product_name, description, price, category)
+VALUES (1, 'Used Textbook - Calculus 101', 'A well-maintained calculus textbook.', 25.00, 'Books');
